@@ -103,9 +103,7 @@ section {
   >* {
     min-width: 75%;
   }
-}
 
-.intro {
   header, footer {
     position: absolute;
     left: $section-horiz-padding;
@@ -118,4 +116,9 @@ section {
   footer {
     bottom: 50px;
   }
+}
+
+.intro header {
+  font-family: Times;
+  font-size: 120%;
 }
