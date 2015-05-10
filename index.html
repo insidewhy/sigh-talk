@@ -75,7 +75,7 @@
         * Slowly floods bottom of screen.
         * Kills cat.
         * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
-        * Should I care I'm using streams and really have to write pipe so much?
+        * You interact with stream API directly, need to write "pipe" a lot.
       </div>
     </section>
 
@@ -129,11 +129,13 @@
         # sigh
 
         * Functional Reactive Programming (sloth hugging kitten)
+        * Like lodash of streams (flatten, reduce etc.)
         * n:n operations: in sigh each event is an array of files rather than a single file.
         * Does not use fs except when absolutely necessary.
         * Source maps from minified/transpiled files back to original sources.
         * Very neat Assetfile.js syntax.
-        * Like lodash of streams (flatten, reduce etc.)
+          * Only plugin authors have to interact with stream API.
+          * Abstract from sigh.js, array and plugin based tree structure.
       </div>
     </section>
 
