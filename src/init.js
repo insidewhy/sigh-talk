@@ -51,7 +51,7 @@ function init() {
     })
   }
 
-  window.addEventListener('keyup', event => {
+  window.addEventListener('keydown', event => {
     if (event.keyCode === 39)
       changeSlide(1)
     else if (event.keyCode === 37)
