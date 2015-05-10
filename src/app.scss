@@ -100,8 +100,17 @@ section {
   }
 }
 
-.intro .footer {
-  position: absolute;
-  bottom: 50px;
-  left: $section-horiz-padding;
+.intro {
+  header, footer {
+    position: absolute;
+    left: $section-horiz-padding;
+  }
+
+  header {
+    top: 50px;
+  }
+
+  footer {
+    bottom: 50px;
+  }
 }
