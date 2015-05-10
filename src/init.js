@@ -2,7 +2,8 @@ import showdown from 'showdown'
 import _ from 'lodash'
 
 import { all, one } from './utils'
-import { init as initSlides, allSlides, changeSlide, activateSlide, activeIndex } from './slides'
+import { highlightActiveMenuItem, initMenu } from './menu'
+import { init as initSlides, changeSlide, activateSlide } from './slides'
 
 // livereload
 var js = document.createElement('script')
@@ -33,40 +34,18 @@ function translateMarkdown() {
   translateMarkdown()
 }
 
-// init
 function init() {
   translateMarkdown()
   initSlides()
-
-  var slideUl = one('aside ul')
-  allSlides.forEach(slide => {
-    var li = document.createElement('li')
-    li.innerHTML = slide.replace('-', ' ')
-    slideUl.appendChild(li)
-
-    li.onclick = () => {
-      activateSlide(slide)
-      activateMenuItem()
-    }
-  })
-
-  var activateMenuItem = () => {
-    var listItems = all('aside ul li')
-    var activateIdx = activeIndex()
-
-    listItems.forEach((li, idx) => {
-      li.className = idx === activateIdx ? 'active' : ''
-    })
-  }
+  initMenu()
 
   window.addEventListener('keydown', event => {
     if (event.keyCode === 39)
       changeSlide(1)
     else if (event.keyCode === 37)
       changeSlide(-1)
-    activateMenuItem()
+    highlightActiveMenuItem()
   })
-  activateMenuItem()
 
   one('body').className = ''
 }
