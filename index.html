@@ -49,6 +49,7 @@
 
         * It's not an asset pipeline, it's a task runner.
         * (show 667 line angular-fullstack-generated)
+        * Tasks build code by compiling it in a temporary directory.
       </div>
     </section>
 
@@ -82,19 +83,22 @@
       <div class="markdown">
         # Broccoli
 
-        * released ...
-        * still in beta
+        * First release May 2013
+        * Currently in beta
+        * Plugins take one or more trees (filesystem directories).
+        * Output one or more trees (containing built assets).
+        * "The filesystem is the API"
       </div>
     </section>
 
     <section class="broccoli-2">
       <div class="markdown">
-        # Problems with Broccoli
+        # Current issues with Broccoli
 
         * Source maps not working.
-        * Uses the filesystem for everything so plugins must clean up after themselves.
-        * Everything sequential, can't parallelise.
-        * Brocfile.js files are verbose, many lines per transformation.
+        * Use of filesystem means plugins must clean-up.
+        * Everything sequential, can't parallelise: "only a 40% speed gain".
+        * Brocfile.js files can get verbose.
       </div>
     </section>
 
