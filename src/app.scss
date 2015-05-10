@@ -6,6 +6,7 @@ html, body {
 }
 
 body {
+  -webkit-font-smoothing: none;
   font-size: 25px;
   border: 10px solid black;
   font-family: "Comic Sans MS";
