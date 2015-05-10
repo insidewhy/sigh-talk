@@ -11,7 +11,7 @@ document.body.appendChild(js)
 
 function translateMarkdown() {
   var converter = new showdown.converter()
-  for (var node of all('.markdown')) {
+  for (var node of all('[data-markdown]')) {
     var { innerHTML: markdown } = node
 
     markdown = markdown.replace(/^\n+/, '')

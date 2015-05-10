@@ -13,19 +13,19 @@
     </aside>
 
     <section class="intro">
-      <header class="markdown">
+      <header data-markdown>
         ![vb](img/vb.gif)
 
         ![lights](img/lights.gif)
 
         LNUG talk ![microphone](img/microphone.gif) May 27th 1998
       </header>
-      <div class="markdown">
+      <div data-markdown>
         # Build systems for the web and node.js
 
         Current javascript state of the art compared to sigh, a functional reactive declarative build system.
       </div>
-      <footer class="markdown">
+      <footer data-markdown>
         ![waving](img/uk-waving.gif)
         ![geocities](img/geocities.gif)
         <table border=6><tr><td>
@@ -35,7 +35,7 @@
     </section>
 
     <section class="grunt-1">
-      <div class="markdown">
+      <div data-markdown>
         # Grunt
 
         * grunt was released in January 2012.
@@ -44,7 +44,7 @@
     </section>
 
     <section class="grunt-2">
-      <div class="markdown">
+      <div data-markdown>
         # When not to use Grunt
 
         * It's not an asset pipeline, it's a task runner.
@@ -54,7 +54,7 @@
     </section>
 
     <section class="gulp-1">
-      <div class="markdown">
+      <div data-markdown>
         # Gulp
 
         * gulp was released 1.5yrs after grunt in July 2013
@@ -64,7 +64,7 @@
     </section>
 
     <section class="gulp-2">
-      <div class="markdown">
+      <div data-markdown>
         # Things Gulp is not so good at.
 
         * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 difficult.
@@ -80,7 +80,7 @@
     </section>
 
     <section class="broccoli-1">
-      <div class="markdown">
+      <div data-markdown>
         # Broccoli
 
         * First release May 2013
@@ -92,28 +92,28 @@
     </section>
 
     <section class="broccoli-2">
-      <div class="markdown">
+      <div data-markdown>
         # Current issues with Broccoli
 
         * Source maps not working.
         * Use of filesystem means plugins must clean-up.
         * Everything sequential, can't parallelise: "only a 40% speed gain".
-        * Brocfile.js files can get verbose.
+        * Brocfile.js files can get verbose.up
       </div>
     </section>
 
     <section class="the-rest">
-      <div class="markdown">
+      <div data-markdown>
         # Other pipelines
 
         * metalsmith
-        * plumber
+        * plumber (no changes in 6+ months).
         * gobble
       </div>
     </section>
 
     <section class="moaning">
-      <div class="markdown">
+      <div data-markdown>
         # Problems with Everything
 
         * I make a change while the tests are running and:
@@ -125,7 +125,7 @@
     </section>
 
     <section class="sigh-1">
-      <div class="markdown">
+      <div data-markdown>
         # sigh
 
         * Functional Reactive Programming (sloth hugging kitten)
@@ -138,7 +138,7 @@
     </section>
 
     <section class="sigh-2">
-      <div class="markdown">
+      <div data-markdown>
         # Uses multiple CPUs/cores
 
         * Show sigh being faster than compiling files directly with babel.
@@ -146,7 +146,7 @@
     </section>
 
     <section class="sigh-3">
-      <div class="markdown">
+      <div data-markdown>
         # Kills running tests
 
         * Show how they restart
