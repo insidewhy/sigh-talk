@@ -65,9 +65,14 @@ section {
   height: 100%;
   padding: 50px 70px 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   >* {
     min-width: 75%;
   }
+}
+
+.intro .images {
+  position: absolute;
 }
