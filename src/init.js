@@ -10,8 +10,12 @@ js.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereloa
 document.body.appendChild(js)
 
 function translateMarkdown() {
+  var nodes = all('[data-markdown]')
+  if (nodes.length === 0)
+    return
+
   var converter = new showdown.converter()
-  for (var node of all('[data-markdown]')) {
+  for (var node of nodes) {
     var { innerHTML: markdown } = node
 
     markdown = markdown.replace(/^\n+/, '')
@@ -22,7 +26,11 @@ function translateMarkdown() {
     }
 
     node.innerHTML = converter.makeHtml(markdown)
+    node.removeAttribute('data-markdown')
   }
+
+  // do it again to catch nested markdown
+  translateMarkdown()
 }
 
 // init
