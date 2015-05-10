@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel=stylesheet type=text/css href=/build/app.css />
+
+    <script src=build/jspm_packages/system.js></script>
+    <script src=config.js></script>
+    <script>System.import('init')</script>
+  </head>
+  <body class=loading>
+    <section class="intro">
+      <div class="markdown">
+        # Build systems for the web and node.js
+
+        Current javascript state of the art compared to sigh, a functional reactive declarative build system.
+
+        * TODO: Counter goes here
+      </div>
+    </section>
+
+    <section class="grunt">
+      <div class="markdown">
+        # Grunt
+
+        * grunt was released in January 2012.
+        * TODO:
+      </div>
+    </section>
+
+    <section class="grunt-problems">
+      <div class="markdown">
+        # When not to use Grunt
+
+        * It's not an asset pipeline, it's a task runner.
+        * (show 667 line angular-fullstack-generated)
+      </div>
+    </section>
+
+    <section class="gulp">
+      <div class="markdown">
+        # Gulp
+
+        * gulp was released 1.5yrs after grunt in July 2013
+        * pipelines are node streams
+        * plugins are (mostly) stream transforms, 1 source file in 1 destination file out.
+      </div>
+    </section>
+
+    <section class="gulp-problems">
+      <div class="markdown">
+        # Things Gulp is not so good at.
+
+        * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 difficult.
+        * Cannot concatenate streams together with source maps.
+        * Need to use 4 plugins together for incremental rebuilds.
+        * Show screenshot of https://twitter.com/tomdale/status/435463584085049344
+        * Show tear on her anime face.
+        * Slowly floods bottom of screen.
+        * Kills cat.
+        * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
+        * Should I care I'm using streams and really have to write pipe so much?
+      </div>
+    </section>
+
+    <section class="broccoli">
+      <div class="markdown">
+        # Broccoli
+
+        * released ...
+        * still in beta
+      </div>
+    </section>
+
+    <section class="broccoli-problems">
+      <div class="markdown">
+        # Problems with Broccoli
+
+        * Source maps not working.
+        * Uses the filesystem for everything so plugins must clean up after themselves.
+        * Everything sequential, can't parallelise.
+        * Brocfile.js files are verbose, many lines per transformation.
+      </div>
+    </section>
+
+    <section class="everything-problems">
+      <div class="markdown">
+        # Problems with Everything
+
+        * I make a change while the tests are running and:
+          * Let me ignore that for you. (TODO: troll bullet point)
+          * Let me get to that when your tests finish running.
+        * Production source maps.
+        * Need special handling for watching files.
+      </div>
+    </section>
+
+    <section class="other-pipelines">
+      <div class="markdown">
+        # Other pipelines
+
+        * metalsmith
+        * plumber
+        * gobble
+      </div>
+    </section>
+
+    <section class="sigh-intro">
+      <div class="markdown">
+        # sigh
+
+        * Functional Reactive Programming (sloth hugging kitten)
+        * n:n operations: in sigh each event is an array of files rather than a single file.
+        * Does not use fs except when absolutely necessary.
+        * Source maps from minified/transpiled files back to original sources.
+        * Very neat Assetfile.js syntax.
+        * Like lodash of streams (flatten, reduce etc.)
+      </div>
+    </section>
+
+    <section class="sigh-parallel">
+      <div class="markdown">
+        # Uses multiple CPUs/cores
+
+        * Show sigh being faster than compiling files directly with babel.
+      </div>
+    </section>
+
+    <section class="sigh-testing">
+      <div class="markdown">
+        # Kills running tests
+
+        * Show how they restart
+        * But how does the replacement process start so quickly?
+        * Two processes are waiting!
+
+        # Structure
+
+        * Make bigger pipelines by connecting pipelines together.
+      </div>
+    </section>
+  </body>
+</html>

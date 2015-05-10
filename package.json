@@ -1,0 +1,40 @@
+{
+  "name": "sigh-talk",
+  "version": "0.0.1",
+  "description": "a talk about sigh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@chilon.net:sigh-talk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.1.10",
+    "express": "^4.12.3",
+    "serve-static": "^1.9.2",
+    "node-sass": "^3.0.0",
+    "sigh": "^0.12.7",
+    "sigh-babel": "^0.11.2",
+    "sigh-sass": "0.0.3",
+    "sigh-livereload": "0.0.1"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "build"
+    },
+    "configFile": "config.js",
+    "dependencies": {
+      "lodash": "npm:lodash@^3.8.0",
+      "showdown": "github:showdownjs/showdown@^0.5.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}

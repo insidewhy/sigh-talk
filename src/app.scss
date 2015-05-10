@@ -1,0 +1,64 @@
+html, body {
+  &, body>section {
+    height: 100%;
+    width: 100%;
+  }
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 40px;
+  border: 10px solid black;
+  font-family: "Comic Sans MS";
+
+  // for background opacity
+  position: relative;
+  &::after {
+    content: "";
+    opacity: 0.2;
+    background: url(../img/star-field-inv.gif);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.loading {
+  section {
+    display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0 10px 20px 0;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+li>ul>li {
+  padding-left: 30px;
+}
+
+li {
+  list-style-position: inside;
+}
+
+section {
+  padding: 50px 70px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  >* {
+    min-width: 75%;
+  }
+}
