@@ -45,6 +45,12 @@ aside {
     background: url(../img/link-button.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    &.active {
+      -webkit-filter: hue-rotate(105deg) saturate(5);
+    }
+    &:hover {
+      -webkit-filter: hue-rotate(180deg) saturate(5);
+    }
   }
 }
 

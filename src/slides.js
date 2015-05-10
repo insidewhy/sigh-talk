@@ -20,6 +20,10 @@ export function changeSlide(offset) {
     activateSlide(allSlides[activeIdx])
 }
 
+export function activeIndex() {
+  return allSlides.indexOf(activeSlide)
+}
+
 export function init(parentSelector = 'body') {
   var sections = all(`${parentSelector}>section`)
   allSlides = sections.map(node => node.className.split(' ')[0])
