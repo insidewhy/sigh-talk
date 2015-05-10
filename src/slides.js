@@ -1,6 +1,7 @@
 import { all, one } from './utils'
 
-var allSlides = []
+// the class names of all slides in order
+export var allSlides = []
 var activeSlide = ''
 
 function activateSlide(name, style = '') {

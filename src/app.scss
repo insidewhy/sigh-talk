@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-  font-size: 40px;
+  font-size: 25px;
   border: 10px solid black;
   font-family: "Comic Sans MS";
 
@@ -25,13 +25,25 @@ body {
     bottom: 0;
     z-index: -1;
   }
+}
 
-  >aside {
-    float: left;
-    padding: 30px;
-    height: 100%;
-    overflow-y: scroll;
-    border-right: 3px solid black;
+aside {
+  font-size: 80%;
+  float: left;
+  padding: 30px 5px;
+  height: 100%;
+  width: 15%;
+  overflow-y: scroll;
+  border-right: 3px solid black;
+  ul {
+    list-style: none;
+  }
+  li {
+    text-align: center;
+    padding: 10px 0;
+    background: url(../img/link-button.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 }
 

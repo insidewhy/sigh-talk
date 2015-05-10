@@ -2,7 +2,7 @@ import showdown from 'showdown'
 import _ from 'lodash'
 
 import { all, one } from './utils'
-import { init as initSlides } from './slides'
+import { init as initSlides, allSlides } from './slides'
 
 // livereload
 var js = document.createElement('script')
@@ -29,6 +29,13 @@ function translateMarkdown() {
 function init() {
   translateMarkdown()
   initSlides()
+
+  var slideUl = one('aside ul')
+  allSlides.forEach(slide => {
+    var li = document.createElement('li')
+    li.innerHTML = slide.replace('-', ' ')
+    slideUl.appendChild(li)
+  })
   one('body').className = ''
 }
 
