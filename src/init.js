@@ -47,7 +47,6 @@ function init() {
     var activateIdx = activeIndex()
 
     listItems.forEach((li, idx) => {
-      console.log("poo", idx, activateIdx)
       li.className = idx === activateIdx ? 'active' : ''
     })
   }
