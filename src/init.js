@@ -22,8 +22,10 @@ function translateMarkdown() {
     markdown = markdown.replace(/^\n+/, '')
     if (/^ +/.test(markdown)) {
       var nonWsMatch = /[^ ]/.exec(markdown)
+      var repl = new RegExp(`^ {${nonWsMatch.index}}`)
+
       if (nonWsMatch)
-        markdown = markdown.split('\n').map(line => line.substr(nonWsMatch.index)).join('\n')
+        markdown = markdown.split('\n').map(line => line.replace(repl, '')).join('\n')
     }
 
     node.innerHTML = marked(markdown)
