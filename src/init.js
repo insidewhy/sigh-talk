@@ -13,6 +13,8 @@ document.body.appendChild(js)
 
 marked.setOptions({
   highlight(code) {
+    // to avoid double escaping
+    code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
     return highlightjs.highlightAuto(code).value
   }
 })
