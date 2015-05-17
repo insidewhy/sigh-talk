@@ -11,14 +11,6 @@ var js = document.createElement('script')
 js.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'
 document.body.appendChild(js)
 
-marked.setOptions({
-  highlight(code) {
-    // to avoid double escaping
-    code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    return highlightjs.highlightAuto(code).value
-  }
-})
-
 function translateMarkdown() {
   var nodes = all('[data-markdown]')
   if (nodes.length === 0)
@@ -42,7 +34,26 @@ function translateMarkdown() {
   translateMarkdown()
 }
 
+function runImports() {
+  var links = all('link[rel="import"]')
+  links.forEach(link => {
+    var nodes = all(link.import, 'body >*')
+    nodes.forEach(node => {
+      link.parentNode.insertBefore(node, link)
+    })
+  })
+}
+
 function init() {
+  marked.setOptions({
+    highlight(code) {
+      // to avoid double escaping
+      code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      return highlightjs.highlightAuto(code).value
+    }
+  })
+
+  runImports()
   translateMarkdown()
   initSlides()
   initMenu()
