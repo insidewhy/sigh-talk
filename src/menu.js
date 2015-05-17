@@ -1,5 +1,6 @@
 import { all, one } from './utils'
 import { allSlides, activeIndex } from './slides'
+import { activateSlide } from './slides'
 
 export function highlightActiveMenuItem() {
   var listItems = all('aside ul li')

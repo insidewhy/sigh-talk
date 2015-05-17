@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { all, one } from './utils'
 import { highlightActiveMenuItem, initMenu } from './menu'
-import { init as initSlides, changeSlide, activateSlide } from './slides'
+import { init as initSlides, changeSlide } from './slides'
 
 // livereload
 var js = document.createElement('script')
