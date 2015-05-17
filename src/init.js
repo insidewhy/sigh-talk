@@ -1,4 +1,4 @@
-import showdown from 'showdown'
+import marked from 'marked'
 import _ from 'lodash'
 
 import { all, one } from './utils'
@@ -15,7 +15,6 @@ function translateMarkdown() {
   if (nodes.length === 0)
     return
 
-  var converter = new showdown.converter()
   for (var node of nodes) {
     var { innerHTML: markdown } = node
 
@@ -26,7 +25,7 @@ function translateMarkdown() {
         markdown = markdown.split('\n').map(line => line.substr(nonWsMatch.index)).join('\n')
     }
 
-    node.innerHTML = converter.makeHtml(markdown)
+    node.innerHTML = marked(markdown)
     node.removeAttribute('data-markdown')
   }
 
