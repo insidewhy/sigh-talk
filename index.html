@@ -19,7 +19,7 @@
 
         ![lights](img/lights.gif)
 
-        LNUG talk ![microphone](img/microphone.gif) May 27th 1998
+        LNUG talk ![microphone](img/microphone.gif) May 27th 1998 - Mr Friend
       </header>
       <div data-markdown>
         # Build systems for the web and node.js
@@ -69,7 +69,7 @@
       <link rel=import href=gruntfile.js.html />
     </section>
 
-    <section class="gulp-1">
+    <section class="gulp">
       <div data-markdown>
         # Gulp
 
@@ -80,7 +80,7 @@
       </div>
     </section>
 
-    <section class="gulp-2">
+    <section class="oh-gulp">
       <div data-markdown>
         # Things Gulp is not so good at.
 
@@ -96,7 +96,7 @@
       </div>
     </section>
 
-    <section class="broccoli-1">
+    <section class="broccoli">
       <div data-markdown>
         # Broccoli
 
@@ -108,12 +108,16 @@
       </div>
     </section>
 
-    <section class="broccoli-2">
+    <section class="oh-broccoli">
       <div data-markdown>
         # Current issues with Broccoli
 
         * Source maps only sometimes working.
+          * Most plugins lack transitive application.
+          * Broccoli currently provides no helpers for this.
         * Use of filesystem means plugins must clean-up.
+          * "The filesystem is the API".
+          * "The really cool special API is the API".
         * Everything sequential, can't parallelise: "only a 40% speed gain".
         * Brocfile.js files can get verbose.
       </div>
