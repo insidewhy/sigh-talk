@@ -28,6 +28,7 @@
     },
     "configFile": "config.js",
     "dependencies": {
+      "highlightjs": "github:components/highlightjs@^8.5.0",
       "lodash": "npm:lodash@^3.8.0",
       "marked": "npm:marked@^0.3.3"
     },

@@ -1,3 +1,4 @@
+import highlightjs from 'highlightjs'
 import marked from 'marked'
 import _ from 'lodash'
 
@@ -9,6 +10,12 @@ import { init as initSlides, changeSlide, activateSlide } from './slides'
 var js = document.createElement('script')
 js.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'
 document.body.appendChild(js)
+
+marked.setOptions({
+  highlight(code) {
+    return highlightjs.highlightAuto(code).value
+  }
+})
 
 function translateMarkdown() {
   var nodes = all('[data-markdown]')
