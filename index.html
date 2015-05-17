@@ -60,7 +60,7 @@
 
     <section class="oh-grunt">
       <div data-markdown>
-        # When not to use Grunt
+        # But...
 
         * Task runner, asset pipeline stuff has to be custom written.
         * Tasks build code by compiling it in a temporary directory.
@@ -82,7 +82,7 @@
 
     <section class="oh-gulp">
       <div data-markdown>
-        # Things Gulp is not so good at.
+        # But...
 
         * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 more difficult.
         * Concatenating source maps doesn't always work.
@@ -112,14 +112,12 @@
 
     <section class="oh-broccoli">
       <div data-markdown>
-        # Current issues with Broccoli
+        # But...
 
         * Source maps only sometimes working.
           * Most plugins lack transitive application.
           * Broccoli currently provides no helpers for this.
         * Use of filesystem means plugins must clean-up.
-          * "The filesystem is the API".
-          * "The really cool special API is the API".
         * Everything sequential, can't parallelise: "only a 40% speed gain".
         * Brocfile.js files can get verbose.
       </div>
@@ -155,6 +153,9 @@
         * Like lodash of streams (flatten, reduce etc.)
         * n:n operations: in sigh each event is an array of files rather than a single file.
         * Does not use fs except when absolutely necessary.
+        * Provides lovely APIs for plugin writers
+          * Spreading work over multiple processes/CPUs.
+          * Working with source maps (application, concatenation).
         * Source maps from minified/transpiled files back to original sources.
         * Very neat Assetfile.js syntax.
           * Only plugin authors have to interact with stream API.
