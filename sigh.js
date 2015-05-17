@@ -16,4 +16,11 @@ module.exports = function(pipelines) {
     ),
     livereload()
   ]
+
+  // [
+  //   glob(glopOpts, '*.js', 'app.scss'),
+  //   sass(),
+  //   babel(),
+  //   write({ clobber: '!(jspm_packages)' }, 'build')
+  // ],
 }
