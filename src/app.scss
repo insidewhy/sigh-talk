@@ -132,3 +132,13 @@ section {
   overflow: scroll;
   font-size: 50%;
 }
+
+.oh-gulp {
+  img {
+    position: relative;
+  }
+  div img {
+    height: 100px;
+    width: 80%;
+  }
+}

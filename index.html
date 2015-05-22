@@ -29,7 +29,7 @@
       <footer data-markdown>
         ![waving](img/uk-waving.gif)
         ![geocities](img/geocities.gif)
-        <table border=6><tr><td data-markdown>
+        <table border=6><tr><td>
           [email coolguy82@hotmail.com](http://chilon.net)
         </td></tr></table>
       </footer>
@@ -83,18 +83,27 @@
     </section>
 
     <section class="oh-gulp">
-      <div data-markdown>
-        # But...
-
-        * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 more difficult.
-        * Concatenating source maps doesn't always work.
+      <header>
+        <img data-marquee="-50px:200px:2000" alt="jo liss on gulp" src=img/ibelieve.jpg />
+      </header>
+      <div>
+        <img data-marquee="-100px:100px" data-blink alt=facepalm src=img/facepalm.jpg />
+      </div>
+      <footer data-markdown>
         * Need to use 4 plugins together for incremental rebuilds.
           * gulp-changed (or gulp-newer): only pass through changed files.
           * gulp-cached: in memory file cache.
           * gulp-remember: keep unchanged files cached.
           * gulp-order: To maintain file order.
-        * After an error you need to restart gulp!
-        * Show screenshot of https://twitter.com/tomdale/status/435463584085049344
+      </footer>
+    </section>
+
+    <section class="oh-gulp-2">
+      <div data-markdown>
+        * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 more difficult.
+        * Concatenating source maps doesn't always work.
+        * Node stream API not so good for this task:
+          * gulp-plumber
         * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
         * You interact with stream API directly, need to write "pipe" a lot.
       </div>

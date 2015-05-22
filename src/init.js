@@ -12,11 +12,7 @@ js.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereloa
 document.body.appendChild(js)
 
 function translateMarkdown() {
-  var nodes = all('[data-markdown]')
-  if (nodes.length === 0)
-    return
-
-  for (var node of nodes) {
+  for (var node of all('[data-markdown]')) {
     var { innerHTML: markdown } = node
 
     markdown = markdown.replace(/^\n+/, '')
@@ -31,9 +27,31 @@ function translateMarkdown() {
     node.innerHTML = marked(markdown)
     node.removeAttribute('data-markdown')
   }
+}
 
-  // do it again to catch nested markdown
-  translateMarkdown()
+function initEffects() {
+  for (var node of all('[data-marquee]')) {
+    var [ first, second, duration = 1000 ] = node.dataset.marquee.split(':')
+
+    console.log("poo", duration)
+
+    node.animate([
+      { left: first },
+      { left: second },
+    ], { duration, direction: 'alternate', iterations: 9999999 })
+  }
+
+  for (var node of all('[data-blink]')) {
+    node.animate([
+      { opacity: '0' },
+      { opacity: '1' },
+    ], {
+      duration: 400,
+      direction: 'alternate',
+      iterations: 9999999,
+      easing: 'step-middle'
+    })
+  }
 }
 
 function runImports() {
@@ -57,6 +75,7 @@ function init() {
 
   runImports()
   translateMarkdown()
+  initEffects()
   initSlides()
   initMenu()
 

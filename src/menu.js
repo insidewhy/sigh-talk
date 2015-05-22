@@ -15,7 +15,7 @@ export function initMenu() {
   var slideUl = one('aside ul')
   allSlides.forEach(slide => {
     var li = document.createElement('li')
-    li.innerHTML = slide.replace('-', ' ')
+    li.innerHTML = slide.replace(/-/g, ' ')
     slideUl.appendChild(li)
 
     li.onclick = () => {
