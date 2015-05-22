@@ -83,6 +83,18 @@
     </section>
 
     <section class="oh-gulp">
+      <div data-markdown>
+        * Streams transforms are built around transforming files 1:1
+          * n:n/1:n/n:1 transforms more difficult.
+        * Concatenating source maps doesn't always work.
+        * Node stream API not so good for this task:
+          * gulp-plumber
+        * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
+        * PIPE
+      </div>
+    </section>
+
+    <section class="oh-gulp-2">
       <header>
         <img data-marquee="-50px:200px:2000" alt="jo liss on gulp" src=img/ibelieve.jpg />
       </header>
@@ -98,16 +110,6 @@
       </footer>
     </section>
 
-    <section class="oh-gulp-2">
-      <div data-markdown>
-        * Streams transforms are built around transforming files 1:1, n:n/1:n/n:1 more difficult.
-        * Concatenating source maps doesn't always work.
-        * Node stream API not so good for this task:
-          * gulp-plumber
-        * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
-        * You interact with stream API directly, need to write "pipe" a lot.
-      </div>
-    </section>
 
     <section class="broccoli">
       <div data-markdown>
