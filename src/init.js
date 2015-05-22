@@ -31,9 +31,10 @@ function translateMarkdown() {
 
 function initEffects() {
   for (var node of all('[data-marquee]')) {
-    var [ first, second, duration = 1000 ] = node.dataset.marquee.split(':')
-
-    console.log("poo", duration)
+    var { marquee } = node.dataset
+    var [ first = '-100px',
+          second = '100px',
+          duration = 1000 ] = marquee ? marquee.split(':') : []
 
     node.animate([
       { left: first },
@@ -42,11 +43,8 @@ function initEffects() {
   }
 
   for (var node of all('[data-blink]')) {
-    node.animate([
-      { opacity: '0' },
-      { opacity: '1' },
-    ], {
-      duration: 400,
+    node.animate([ { opacity: '0' }, { opacity: '1' }, ], {
+      duration: node.dataset.blink || 400,
       direction: 'alternate',
       iterations: 9999999,
       easing: 'step-middle'
