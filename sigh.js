@@ -17,7 +17,10 @@ module.exports = function(pipelines) {
     livereload()
   ]
 
-  pipelines.run = [ process('node server.js') ]
+  pipelines.server = [
+    glob('server.js'),
+    process('node server.js')
+  ]
 
   // [
   //   glob(glopOpts, '*.js', 'app.scss'),
