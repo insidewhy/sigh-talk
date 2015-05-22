@@ -1,4 +1,4 @@
-var glob, babel, sass, write, livereload
+var glob, babel, sass, write, livereload, process
 
 module.exports = function(pipelines) {
   var globOpts = { basePath: 'src' }
@@ -16,6 +16,8 @@ module.exports = function(pipelines) {
     ),
     livereload()
   ]
+
+  pipelines.run = [ process('node server.js') ]
 
   // [
   //   glob(glopOpts, '*.js', 'app.scss'),
