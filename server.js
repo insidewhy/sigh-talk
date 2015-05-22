@@ -1,4 +1,5 @@
-var PORT = process.env.PORT || 4926;
+'use strict';
+var PORT = process.env.PORT || 9000
 
 var serveStatic = require('serve-static')
 var app = require('express')()
