@@ -37,14 +37,17 @@
 
     <section class="what-is">
       <div data-markdown>
+        Wikipedia: "In computing, a pipeline is a set of data processing elements connected in series, where the output of one element is the input of the next one."
+
         * How to build code:
           * Task runner
           * Asset pipeline
           * Build automation system
         * Good for anything that reacts to code changes
-          * Compile/transpile your es6/coffee/typescript/scss.
-          * Run your tests.
-          * Create your production assets.
+          * Transpile es6/coffee/typescript/scss.
+          * Run tests after everything is built.
+          * Create production version of code (minified etc.)
+          * Talks to your browser via livereload.
       </div>
     </section>
 
@@ -55,10 +58,13 @@
         * node 0.0.1 released in May 2009.
         * CoffeeScript 0.1 in December 2009.
         * npm 0.0.1 in January 2010 (node at 0.1).
-        * CoffeeScript 1.0 in December 2010.
+          * ... and Simon Cowell leaves American Idol
         * jake 0.1.5 in August 2010.
+        * CoffeeScript 1.0 in December 2010.
         * npm 1.0.1 released in April 2011 (node at 0.4)
-        * grunt first released in January 2012.
+        * grunt 0.1.0 released in January 2012.
+        * broccoli 0.0.2 released in May 2013.
+        * gulp 0.0.1 released in July 2013, 1.0.0 in September.
       </div>
     </section>
 
@@ -67,6 +73,7 @@
         # Before grunt
 
         * Gnu make: Makefile (gruntfile.js, gulpfile.js etc.)
+        * jake
         * Shell scripts
         * Custom build scripts written in javascript
         * Other stuff
