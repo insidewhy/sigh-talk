@@ -164,14 +164,17 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
         var concat     = require('gulp-concat')
         var merge      = require('merge-stream')
 
-        var paths = ['app/**/*.js']
+        var paths = {
+          client: ['app/**/*.js'],
+          raw: ['raw/*.js']
+        }
 
         gulp.task('client-scripts', function() {
           merge(
-            gulp.src(paths)
+            gulp.src(paths.client)
               .pipe(sourcemaps.init())
               .pipe(traceur()),
-            gulp.src('bootstrap.js')
+            gulp.src(paths.raw)
               .pipe(sourcemaps.init())
           )
           .pipe(concat('output.js'))
@@ -180,7 +183,7 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
         })
 
         gulp.task('watch', function() {
-          gulp.watch(paths, ['client-scripts']
+          gulp.watch(paths.client.concat(paths.raw), ['client-scripts'])
         })
 
         gulp.task('default', ['client-scripts', 'watch'])
@@ -189,14 +192,13 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
     </section>
 
     <section class="oh-gulp-2">
+      <!-- PIPES -->
       <div data-markdown>
+        * Concatenating source maps doesn't always work.
         * Streams transforms are built around transforming files 1:1
           * n:n/1:n/n:1 transforms more difficult.
-        * Concatenating source maps doesn't always work.
         * Node stream API not so good for this task:
           * gulp-plumber
-        * Example from [here](https://github.com/gulpjs/gulp/) PIPE PIPE PIPE POPEYE
-        * PIPE
       </div>
     </section>
 
@@ -208,14 +210,65 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
         <img data-marquee data-blink alt=facepalm src=img/facepalm.jpg />
       </div>
       <footer data-markdown>
-        * Need to use 4 plugins together for incremental rebuilds.
-          * gulp-changed (or gulp-newer): only pass through changed files.
-          * gulp-cached: in memory file cache.
-          * gulp-remember: keep unchanged files cached.
+        * Need to use three plugins to get incremental rebuilds.
+          * gulp-cached : only pass through changed files.
+            * There is also gulp-cached / gulp-remember.
+          * gulp-remember: to allow cache to work with many:1 plugins.
           * gulp-order: To maintain file order.
       </footer>
     </section>
 
+    <section class="oh-gulp-4">
+      <div data-markdown>
+        ```javascript
+        // gulpfile.js
+        var gulp       = require('gulp')
+        var traceur    = require('gulp-traceur')
+        var sourcemaps = require('gulp-sourcemaps')
+        var concat     = require('gulp-concat')
+        var merge      = require('merge-stream')
+
+        // these are needed for incremental rebuilds
+        var cache      = require('gulp-cached')
+        var remember   = require('gulp-remember')
+        var order      = require('gulp-order')
+
+        // this is needed to fix bad stream behaviour
+        var plumber    = require('gulp-plumber')
+
+        var paths = {
+          client: ['app/**/*.js'],
+          raw: ['raw/*.js']
+        }
+
+        gulp.task('client-scripts', function() {
+          merge(
+            gulp.src(paths.client)
+              .pipe(sourcemaps.init())
+              .pipe(plumber())
+              .pipe(cache('clientCode'))
+              .pipe(traceur()),
+            gulp.src(paths.raw)
+              .pipe(sourcemaps.init())
+              .pipe(cache('bootstrapCode'))
+              .pipe(plumber())
+          )
+          .pipe(remember('bootstrapCode'))
+          .pipe(remember('clientCode'))
+          .pipe(order( paths.client.concat(paths.raw) ))
+          .pipe(concat('output.js'))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest('dist/assets'))
+        })
+
+        gulp.task('watch', function() {
+          gulp.watch(paths.client.concat(paths.raw), ['client-scripts'])
+        })
+
+        gulp.task('default', ['client-scripts', 'watch'])
+        ```
+      </div>
+    </section>
 
     <section class="broccoli">
       <div data-markdown>
