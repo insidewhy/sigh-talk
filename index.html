@@ -156,6 +156,40 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
 
     <section class="oh-gulp">
       <div data-markdown>
+        ```javascript
+        // gulpfile.js
+        var gulp       = require('gulp')
+        var traceur    = require('gulp-traceur')
+        var sourcemaps = require('gulp-sourcemaps')
+        var concat     = require('gulp-concat')
+        var merge      = require('merge-stream')
+
+        var paths = ['app/**/*.js']
+
+        gulp.task('client-scripts', function() {
+          merge(
+            gulp.src(paths)
+              .pipe(sourcemaps.init())
+              .pipe(traceur()),
+            gulp.src('bootstrap.js')
+              .pipe(sourcemaps.init())
+          )
+          .pipe(concat('output.js'))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest('dist/assets'))
+        })
+
+        gulp.task('watch', function() {
+          gulp.watch(paths, ['client-scripts']
+        })
+
+        gulp.task('default', ['client-scripts', 'watch'])
+        ```
+      </div>
+    </section>
+
+    <section class="oh-gulp-2">
+      <div data-markdown>
         * Streams transforms are built around transforming files 1:1
           * n:n/1:n/n:1 transforms more difficult.
         * Concatenating source maps doesn't always work.
@@ -166,7 +200,7 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
       </div>
     </section>
 
-    <section class="oh-gulp-2">
+    <section class="oh-gulp-3">
       <header>
         <img data-marquee="-50px:200px:5000" alt="jo liss on gulp" src=img/ibelieve.jpg />
       </header>
