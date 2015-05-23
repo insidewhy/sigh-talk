@@ -10,6 +10,10 @@ module.exports = function(pipelines) {
           [ glob(globOpts, '*.js'), babel() ],
           [ glob(globOpts, 'app.scss'), sass() ]
         ),
+        // or with less parallelism:
+        // glob(globOpts, '*.js', 'app.scss'),
+        // sass(),
+        // babel(),
         write({ clobber: '!(jspm_packages)' }, 'build'),
       ],
       glob('index.html', 'config.js')
@@ -21,11 +25,4 @@ module.exports = function(pipelines) {
     glob('server.js'),
     process('node server.js')
   ]
-
-  // [
-  //   glob(glopOpts, '*.js', 'app.scss'),
-  //   sass(),
-  //   babel(),
-  //   write({ clobber: '!(jspm_packages)' }, 'build')
-  // ],
 }
