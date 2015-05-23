@@ -9,6 +9,10 @@ export function highlightActiveMenuItem() {
   listItems.forEach((li, idx) => {
     li.className = idx === activateIdx ? 'active' : ''
   })
+
+  var aside = one('aside')
+  aside.scrollTop =
+    (activateIdx / (listItems.length - 1)) * (aside.scrollHeight - aside.clientHeight)
 }
 
 export function initMenu() {
