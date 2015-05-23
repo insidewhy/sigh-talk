@@ -250,8 +250,8 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
               .pipe(traceur()),
             gulp.src(paths.raw)
               .pipe(sourcemaps.init())
-              .pipe(cache('bootstrapCode'))
               .pipe(plumber())
+              .pipe(cache('bootstrapCode'))
           )
           .pipe(remember('bootstrapCode'))
           .pipe(remember('clientCode'))
