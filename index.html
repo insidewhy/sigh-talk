@@ -35,6 +35,19 @@
       </footer>
     </section>
 
+    <section class="what-is">
+      <div data-markdown>
+        * How to build code:
+          * Task runner
+          * Asset pipeline
+          * Build automation system
+        * Good for anything that reacts to code changes
+          * Compile/transpile your es6/coffee/typescript/scss.
+          * Run your tests.
+          * Create your production assets.
+      </div>
+    </section>
+
     <section class="history">
       <div data-markdown>
         # History
@@ -42,7 +55,8 @@
         * node 0.0.1 released in May 2009.
         * CoffeeScript 0.1 in December 2009.
         * npm 0.0.1 in January 2010 (node at 0.1).
-        * CoffeeScript 1.0 in December 2010
+        * CoffeeScript 1.0 in December 2010.
+        * jake 0.1.5 in August 2010.
         * npm 1.0.1 released in April 2011 (node at 0.4)
         * grunt first released in January 2012.
       </div>
@@ -53,10 +67,25 @@
         # Before grunt
 
         * Gnu make: Makefile (gruntfile.js, gulpfile.js etc.)
-        * action: kitten pops up holding makefile... -j3 etc.
         * Shell scripts
         * Custom build scripts written in javascript
         * Other stuff
+      </div>
+    </section>
+
+    <section class="Makefiles">
+      <div>
+        <pre><code>
+<img alt="happy kitten" src=img/happy-kitten.jpg> <img alt="poop" src=img/poop.jpg><span class=colon>:</span> <img alt="sad kitten" src=img/sad-kitten.jpg>
+    @echo "feeding lovely animal $^"
+    feed --animal $^
+
+<img alt="A-Team" src=img/a-team.png><span class=colon>:</span> <img alt="Mr. T" src=img/mr-t.jpg> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime" src=img/optimus-prime.png> <img alt="She Ra" src=img/she-ra.jpg>
+    cat $^ > $@
+
+<img alt="pipe bomb" src=img/pipe-bomb.png><span class=colon>:</span> <img alt="A-Team" src=img/a-team.png> <img alt="happy kitten" src=img/happy-kitten.jpg> <img alt=poop src=img/poop.jpg> <img alt=gum src=img/gum.jpg>
+    mplayer montage.mkv
+        </pre></code>
       </div>
     </section>
 
@@ -97,7 +126,7 @@
 
     <section class="oh-gulp-2">
       <header>
-        <img data-marquee="-50px:200px:2000" alt="jo liss on gulp" src=img/ibelieve.jpg />
+        <img data-marquee="-50px:200px:5000" alt="jo liss on gulp" src=img/ibelieve.jpg />
       </header>
       <div>
         <img data-marquee data-blink alt=facepalm src=img/facepalm.jpg />

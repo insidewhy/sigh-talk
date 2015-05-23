@@ -124,6 +124,20 @@ section {
   font-size: 120%;
 }
 
+.Makefiles {
+  padding-top: 10px;
+  pre {
+    margin-top: 0;
+    font-size: 120%;
+    img {
+      height: 100px;
+    }
+    .colon {
+      font-size: 360%;
+    }
+  }
+}
+
 .oh-grunt pre {
   background-color: white;
   margin-top: 20px;
