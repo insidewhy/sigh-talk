@@ -3,7 +3,7 @@ var glob, babel, sass, write, livereload, process
 module.exports = function(pipelines) {
   var globOpts = { basePath: 'src' }
 
-  pipelines.build = [
+  pipelines.client = [
     merge(
       [
         merge(
