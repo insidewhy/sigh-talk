@@ -140,10 +140,18 @@ section {
 .Makefiles {
   position: relative;
   padding-top: 10px;
+
+  header {
+    position: relative;
+    top: -15px;
+    left: 0;
+  }
+
   img {
     vertical-align: -15%;
     height: 100px;
   }
+
   pre {
     margin-top: 0;
     font-size: 120%;
@@ -151,6 +159,7 @@ section {
       font-size: 360%;
     }
   }
+
   .console {
     position: absolute;
     min-width: 0%;
@@ -159,6 +168,13 @@ section {
     img {
       margin-left: 10px;
     }
+  }
+
+  .hey-man {
+    display: inline-block;
+    padding: 5px;
+    border: 3px solid black;
+    border-radius: 10px;
   }
 }
 
