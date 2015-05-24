@@ -174,13 +174,13 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         var merge      = require('merge-stream')
 
         var paths = {
-          client: ['app/**/*.js'],
+          es6: ['app/**/*.js'],
           raw: ['raw/*.js']
         }
 
         gulp.task('client-scripts', function() {
           merge(
-            gulp.src(paths.client)
+            gulp.src(paths.es6)
               .pipe(sourcemaps.init())
               .pipe(traceur()),
             gulp.src(paths.raw)
@@ -192,7 +192,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         })
 
         gulp.task('watch', function() {
-          gulp.watch(paths.client.concat(paths.raw), ['client-scripts'])
+          gulp.watch(paths.es6.concat(paths.raw), ['client-scripts'])
         })
 
         gulp.task('default', ['client-scripts', 'watch'])
@@ -246,32 +246,30 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         var plumber    = require('gulp-plumber')
 
         var paths = {
-          client: ['app/**/*.js'],
+          es6: ['app/**/*.js'],
           raw: ['raw/*.js']
         }
+        var allPaths = paths.es6.concat(paths.raw)
 
         gulp.task('client-scripts', function() {
           merge(
-            gulp.src(paths.client)
+            gulp.src(paths.es6)
               .pipe(sourcemaps.init())
               .pipe(plumber())
-              .pipe(cache('clientCode'))
+              .pipe(cache('traceurCode'))
               .pipe(traceur()),
             gulp.src(paths.raw)
               .pipe(sourcemaps.init())
-              .pipe(plumber())
-              .pipe(cache('bootstrapCode'))
           )
-          .pipe(remember('bootstrapCode'))
-          .pipe(remember('clientCode'))
-          .pipe(order( paths.client.concat(paths.raw) ))
+          .pipe(remember('traceurCode'))
+          .pipe(order(allPaths))
           .pipe(concat('output.js'))
           .pipe(sourcemaps.write())
           .pipe(gulp.dest('dist/assets'))
         })
 
         gulp.task('watch', function() {
-          gulp.watch(paths.client.concat(paths.raw), ['client-scripts'])
+          gulp.watch(allPaths, ['client-scripts'])
         })
 
         gulp.task('default', ['client-scripts', 'watch'])
@@ -298,7 +296,9 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         * Source maps only sometimes working.
           * Most plugins lack transitive application.
         * Use of filesystem means plugins must clean-up.
-        * Everything sequential, can't parallelise: "only a 40% speed gain".
+        * "No parallelism"
+          * "Only a 40% speed gain."
+          * Possible but broccoli's primitives + helper code encourage deterministic sequential code patterns.
         * Brocfile.js files can get verbose.
       </div>
     </section>
