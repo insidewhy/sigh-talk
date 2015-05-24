@@ -101,12 +101,12 @@ ul, li {
   margin: 0;
 }
 
-li>ul>li {
-  padding-left: 30px;
+section ul>li {
+  margin-left: 1.2em;
 }
 
 li {
-  list-style-position: inside;
+  list-style-position: outside;
 }
 
 $section-horiz-padding: 70px;
