@@ -150,7 +150,9 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         // i cannot ride the catbus like this!!!
         grunt.registerTask('ride-catbus', function() {
           var done = this.async()
+
           grunt.task.run(['wait-at-bus-stop', 'give-totoro-umbrella'])
+
           console.log('Where are you totoro?')
           setTimeout(function() {
             console.log('Totoro... Did I do something wrong???')
