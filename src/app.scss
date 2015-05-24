@@ -260,3 +260,10 @@ section {
     background: url('../img/wtf.png') no-repeat 0 0;
   }
 }
+
+.sigh-2 {
+  >div {
+    position: relative;
+    top: -2em;
+  }
+}
