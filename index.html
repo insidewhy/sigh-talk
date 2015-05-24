@@ -49,6 +49,7 @@
           * Run tests after everything is built.
           * Create production version of code (minified etc.)
           * Talks to your browser via livereload.
+          * Incrementally rebuild.
       </div>
     </section>
 
@@ -299,6 +300,32 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         * Use of filesystem means plugins must clean-up.
         * Everything sequential, can't parallelise: "only a 40% speed gain".
         * Brocfile.js files can get verbose.
+      </div>
+    </section>
+
+    <section class="jspm">
+      <div data-markdown>
+        * Gives you everything browserify + bower does and more.
+          * `jspm install bower:lodash`
+          * `jspm install github:bluebird`
+          * `jspm install npm:bluebird`
+        * Can load AMD/CommonJS and EcmaScript 6 modules.
+        * Can load/transpile dependencies at run-time.
+        * Based on EcmaScript 6 module loader.
+        * Can build modules into a self-contained bundles.
+      </div>
+    </section>
+
+    <section class="oh-jspm">
+      <div data-markdown>
+        * In development mode modules will be transpiled many times:
+          * Each time browser reloads.
+          * During tests.
+        * Modules are transpiled one by one:
+          * Delaying page load.
+          * High CPU usage.
+          * Janks thread.
+        * "Bundle" builds slow, not incrementally rebuilt.
       </div>
     </section>
 
