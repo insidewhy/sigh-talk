@@ -357,35 +357,50 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
       <div data-markdown>
         # sigh
 
-        * Functional Reactive Programming (sloth hugging kitten)
-        * Like lodash of streams (flatten, reduce etc.)
-        * n:n operations: in sigh each event is an array of files rather than a single file.
+        * Functional Reactive Programming
+          * Like lodash of streams (flatten, reduce etc.)
+        * n:n operations: stream payload is array of events.
+        * Can switch between sequential/parallel easily.
         * Does not use fs except when absolutely necessary.
         * Provides lovely APIs for plugin writers
-          * Spreading work over multiple processes/CPUs.
+          * Working with processes.
           * Working with source maps (application, concatenation).
         * Source maps from minified/transpiled files back to original sources.
         * Very neat Assetfile.js syntax.
-          * Only plugin authors have to interact with stream API.
-          * Abstract from sigh.js, array and plugin based tree structure.
+          * Plugin authors have powerful FRP stream API.
+          * Stream API hidden from users by pipeline compiler.
       </div>
     </section>
 
     <section class="sigh-2">
       <div data-markdown>
-        # Uses multiple CPUs/cores
+        # That gulp example from earlier
 
-        * Show sigh being faster than compiling files directly with babel.
+        ```javascript
+        // sigh.js
+        var merge, glob, babel, concat
+
+        module.exports = function(pipelines) {
+          pipeline.build = [
+            merge(
+              [ glob('app/**/*.js'), babel() ],
+              glob('raw/*.js')
+            ),
+            concat('dist/assets/output.js')
+          ]
+        }
+        ```
       </div>
     </section>
 
     <section class="sigh-3">
       <div data-markdown>
-        # Kills running tests
+        # sigh uses processes for extra speed.
 
-        * Show how they restart
-        * But how does the replacement process start so quickly?
-        * Two processes are waiting!
+        * Tests: keeps two processes cached and waiting.
+          * Tests killed when new value received while running.
+          * Second process already waiting to avoid startup delay.
+        * Compiles ES6 files faster than the native transpiler.
 
         # Structure
 
