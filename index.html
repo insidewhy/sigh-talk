@@ -341,9 +341,12 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
         * metalsmith
         * gobble
+        * brunch
 
         ## Those without changes in 6+ months.
         * plumber
+        * cha
+        * grunt
       </div>
     </section>
 
@@ -352,8 +355,8 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         # Problems with Everything
 
         * I make a change while the tests are running and:
-          * Let me ignore that for you. (TODO: troll bullet point)
-          * Let me get to that when your tests finish running.
+          * Change is ignored.
+          * Waits until tests have finished then runs them again.
         * Production source maps.
         * Need special handling for watching files.
       </div>
@@ -365,7 +368,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
         * Functional Reactive Programming
           * Like lodash of streams (flatten, reduce etc.)
-        * n:n operations: stream payload is array of events.
+        * `n:n` / `1:n` / `1:1` operations: stream payload is array of events.
         * Can switch between sequential/parallel easily.
         * Does not use fs except when absolutely necessary.
         * Provides lovely APIs for plugin writers
