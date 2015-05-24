@@ -36,25 +36,32 @@ function initEffects() {
           second = '100px',
           duration = 1000 ] = marquee ? marquee.split(':') : []
 
-    node.animate([
-      { left: first },
-      { left: second },
-    ], { duration, direction: 'alternate', iterations: 9999999 })
+    if (node.animate)
+      node.animate([
+        { left: first },
+        { left: second },
+      ], { duration, direction: 'alternate', iterations: 9999999 })
   }
 
   for (var node of all('[data-blink]')) {
-    node.animate([ { opacity: '0' }, { opacity: '1' }, ], {
-      duration: node.dataset.blink || 400,
-      direction: 'alternate',
-      iterations: 9999999,
-      easing: 'step-middle'
-    })
+    if (node.animate)
+      node.animate([ { opacity: '0' }, { opacity: '1' }, ], {
+        duration: node.dataset.blink || 400,
+        direction: 'alternate',
+        iterations: 9999999,
+        easing: 'step-middle'
+      })
   }
 }
 
 function runImports() {
   var links = all('link[rel="import"]')
   links.forEach(link => {
+    if (! link.import) {
+      // TODO: load using ajax for browsers that don't support html5 imports
+      return
+    }
+
     var nodes = all(link.import, 'body >*')
     nodes.forEach(node => {
       link.parentNode.insertBefore(node, link)
