@@ -318,13 +318,18 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="oh-jspm">
       <div data-markdown>
+        * Have to use ES6 modules + ES6 transpiler in your code:
+        ```javascript
+        import _ from 'lodash'
+        import { promisify } from 'bluebird'
+        ```
         * In development mode modules will be transpiled many times:
           * Each time browser reloads.
           * During tests.
         * Modules are transpiled one by one:
           * Delaying page load.
           * High CPU usage.
-          * Janks thread.
+          * Janking main JavaScript thread.
         * "Bundle" builds slow, not incrementally rebuilt.
       </div>
     </section>
