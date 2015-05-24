@@ -94,7 +94,7 @@
     @echo feeding lovely sad cat
     feed --animal $^
 
-<img alt="A-Team" src=img/a-team.png><span class=colon>:</span> <img alt="Mr. T" src=img/mr-t.png><span class=hey-man data-seq=2-3>Nobody INTERFERES
+<img alt="A-Team" src=img/a-team.png><span class=colon>:</span> <img alt="Mr. T" src=img/mr-t.png><span class=hey-suckah data-seq=2-3>Nobody INTERFERES
 with Mr T or Mr T's
 BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime" src=img/optimus-prime.png> <img alt="She Ra" src=img/she-ra.jpg>
     cat $^ > $@
@@ -145,8 +145,32 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="oh-grunt-2">
       <div data-markdown>
+        ## Can schedule tasks to run after current task
+        ```javascript
+        // i cannot ride the catbus like this!!!
+        grunt.registerTask('ride-catbus', function() {
+          var done = this.async()
+          grunt.task.run(['wait-at-bus-stop', 'give-totoro-umbrella'])
+          console.log('Where are you totoro?')
+          setTimeout(function() {
+            console.log('Totoro... Did I do something wrong???')
+            done()
+            // after this function exits the tasks are run
+          }, 10000)
+        })
+        ```
+
+        Not before or during current task. ~~That would be wrong.~~
+      </div>
+    </section>
+
+    <section class="oh-grunt-3">
+      <div data-markdown>
         * No release for 11 months.
-        * Is a task runner, abused as a build system.
+        * Is a task runner rather than a build system.
+          * It was just used as one.
+          * Because nobody seemed to like jake.
+          * And there was nothing else.
         * Pipeline = plugins taking turns to compile code in temp directories.
         * yeoman angular fullstack generator "best practice" gruntfile, 667 lines long:
       </div>
@@ -208,7 +232,8 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         * Streams transforms are built around transforming files 1:1
           * n:n/1:n/n:1 transforms more difficult.
         * Node stream API not so good for this task:
-          * gulp-plumber
+          * Node streams stop accepting incoming data on first error.
+          * gulp-plumber plugin needed to monkey patch it.
       </div>
     </section>
 
@@ -279,6 +304,14 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     </section>
 
     <section class="broccoli">
+      <header data-seq=1>
+        <img alt="Mr. T" src=img/mr-t.png>
+        <div class=hey-suckah>
+          Mr T recommends you EAT your BROCCOLI SUCKAH.<br>
+          Mr T Recommends also recommends you stay AWAY<br>
+          from Mr T's BINS and Mr T's VAN.
+        </div>
+      </header>
       <div data-markdown>
         # Broccoli
 
@@ -352,7 +385,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="moaning">
       <div data-markdown>
-        # Problems with Everything
+        # Problems with most things
 
         * You make a change while the tests are running and:
           * Change is ignored.

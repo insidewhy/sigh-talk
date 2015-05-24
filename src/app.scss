@@ -147,6 +147,13 @@ section {
   }
 }
 
+.hey-suckah {
+  padding: 7px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: white;
+}
+
 .Makefiles {
   position: relative;
   padding-top: 0px;
@@ -180,12 +187,8 @@ section {
     }
   }
 
-  .hey-man {
+  .hey-suckah {
     display: inline-block;
-    padding: 7px;
-    border: 3px solid black;
-    border-radius: 10px;
-    background-color: white;
   }
 }
 
@@ -206,7 +209,7 @@ section {
   }
 }
 
-.oh-grunt-2 pre {
+.oh-grunt-3 pre {
   background-color: white;
   margin-top: 20px;
   width: 800px;
@@ -233,6 +236,14 @@ section {
   div img {
     height: 100px;
     width: 80%;
+  }
+}
+
+.broccoli {
+  .hey-suckah {
+    position: relative;
+    top: -13px;
+    z-index: 2;
   }
 }
 
