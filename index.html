@@ -92,9 +92,9 @@
     @echo feeding lovely sad cat
     feed --animal $^
 
-<img alt="A-Team" src=img/a-team.png><span class=colon>:</span> <img alt="Mr. T" src=img/mr-t.png><span class=hey-man data-seq=2-3>Hey man NOBODY
-goes NEAR Mr T's
-BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime" src=img/optimus-prime.png> <img alt="She Ra" src=img/she-ra.jpg>
+<img alt="A-Team" src=img/a-team.png><span class=colon>:</span> <img alt="Mr. T" src=img/mr-t.png><span class=hey-man data-seq=2-3>Nobody INTERFERES
+with Mr T or Mr T's
+BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime" src=img/optimus-prime.png> <img alt="She Ra" src=img/she-ra.jpg>
     cat $^ > $@
 
 <img alt="pipe bomb" src=img/pipe-bomb.png><span class=colon>:</span> <img alt="A-Team" src=img/a-team.png> <img alt="happy kitten" src=img/happy-kitten.jpg> <img alt=poop src=img/poop.jpg> <img alt=gum src=img/gum.jpg> <img alt=ajax src=img/ajax.png>
@@ -288,7 +288,6 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
 
         * Source maps only sometimes working.
           * Most plugins lack transitive application.
-          * Broccoli currently provides no helpers for this.
         * Use of filesystem means plugins must clean-up.
         * Everything sequential, can't parallelise: "only a 40% speed gain".
         * Brocfile.js files can get verbose.
@@ -297,11 +296,13 @@ BINS</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimus Prime
 
     <section class="the-rest">
       <div data-markdown>
-        # Other pipelines
+        # Other build systems
 
         * metalsmith
-        * plumber (no changes in 6+ months).
         * gobble
+
+        ## Those without changes in 6+ months.
+        * plumber
       </div>
     </section>
 
