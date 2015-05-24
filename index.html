@@ -306,14 +306,14 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="jspm">
       <div data-markdown>
+        * Based on EcmaScript 6 module loader.
         * Gives you everything browserify + bower does and more.
           * `jspm install bower:lodash`
           * `jspm install github:bluebird`
           * `jspm install npm:totoro-love-helper`
         * Can load AMD/CommonJS and EcmaScript 6 modules.
-        * Can load/transpile dependencies at run-time.
-        * Based on EcmaScript 6 module loader.
-        * Can build modules into a self-contained bundles.
+        * Can load/transpile dependencies at **run-time**.
+        * ... or can prepare self-contained bundles.
       </div>
     </section>
 
@@ -354,7 +354,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
       <div data-markdown>
         # Problems with Everything
 
-        * I make a change while the tests are running and:
+        * You make a change while the tests are running and:
           * Change is ignored.
           * Waits until tests have finished then runs them again.
         * Production source maps.

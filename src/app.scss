@@ -235,3 +235,17 @@ section {
     width: 80%;
   }
 }
+
+.moaning {
+  li ul {
+    margin-top: 10px;
+  }
+  li li {
+    margin-left: 0;
+    padding-left: 70px;
+    height: 80px;
+    line-height: 70px;
+    list-style: none;
+    background: url('../img/wtf.png') no-repeat 0 0;
+  }
+}
