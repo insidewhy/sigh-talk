@@ -667,8 +667,8 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     </section>
 
     <section class="sigh-6">
-      <div data-markdown>
-        # sigh helps scaffold your plugins
+      <div data-markdown data-seq=-1>
+        # sigh helps scaffold your plugins (with yeoman)
 
         <div class=console><span data-blink=500>❯</span> sigh -p plugin-name<br>
           ? <strong>What is the name of this plugin?</strong> plugin name<br>
@@ -684,6 +684,17 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
           ❯◉ bluebird<br>
           &nbsp;◉ lodash<br>
           &nbsp;◉ sigh-core</div>
+
+        Github organisation/author and CI remembered for next time.
+      </div>
+      <div data-seq=1>
+        <h2>Then fill in the remaining code and publish</h2>
+        <div class=console>
+          <span data-blink=500>❯</span> cd plugin-name<br>
+          <span data-blink=500>❯</span> sigh -w<br>
+          # edit code, sigh will recompile and run tests as you do<br>
+          <span data-blink=500>❯</span> npm publish<br>
+        </div>
       </div>
     </section>
   </body>
