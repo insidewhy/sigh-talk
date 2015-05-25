@@ -22,49 +22,56 @@ export function activateSlide(name) {
   sequenceIdx = 0
   sequences = new ArrayOfArrays
   for (var seqNode of all(slide, '[data-seq]')) {
-    var { on, off } = parseSequence(seqNode)
+    var { onIdx, offIdx } = parseSequence(seqNode)
     seqNode.style.display = 'none'
 
-    if (on)
-      sequences.add(on.idx, on.call)
-    if (off)
-      sequences.add(off.idx, off.call)
+    if (onIdx !== undefined)
+      sequences.add(onIdx, { type: 'on', node: seqNode })
+    if (offIdx !== undefined)
+      sequences.add(offIdx, { type: 'off', node: seqNode })
   }
 
-  activateSequence()
+  activateSequence(true)
 }
 
 function parseSequence(node) {
   var seqs = node.dataset.seq.split('-')
-  var on = {
-    call() { node.style.display = '' },
-    idx: seqs[0] || 0
-  }
+  var onIdx = seqs[0] || 0
 
-  if (seqs.length === 1)
-    seqs[1] = parseInt(seqs[2]) + 1
+  // TODO:
+  // if (seqs.length === 1)
+  //   seqs[1] = parseInt(seqs[1]) + 1
 
-  var off = seqs[1] && {
-    call() { node.style.display = 'none' },
-    idx: seqs[1]
-  }
+  var offIdx
+  if (seqs[1] !== undefined)
+    offIdx = seqs[1]
 
-  return { on, off }
+  return { onIdx, offIdx }
 }
 
 // activates sequences at sequenceIdx
-function activateSequence() {
+function activateSequence(activate) {
   var seq = sequences.get(sequenceIdx)
   if (seq)
-    seq.forEach(call => { call() })
+    seq.forEach(({type, node}) => {
+      if (type === (activate ? 'on' : 'off'))
+        node.style.display = ''
+      else
+        node.style.display = 'none'
+    })
 }
 
 export function changeSlide(offset) {
   var nextSequence = sequenceIdx + offset
   if (offset > 0 && nextSequence < sequences.length) {
     for (++sequenceIdx; sequenceIdx < nextSequence; ++sequenceIdx)
-      activateSequence()
-    activateSequence()
+      activateSequence(true)
+    activateSequence(true)
+  }
+  else if (offset < 0 && nextSequence >= 0) {
+    for (; sequenceIdx > nextSequence; --sequenceIdx) {
+      activateSequence(false)
+    }
   }
   else {
     var activeIdx = allSlides.indexOf(activeSlide)
