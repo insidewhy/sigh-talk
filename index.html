@@ -238,6 +238,10 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     <section class="oh-gulp-2">
       <!-- PIPES -->
       <div data-markdown>
+        * ... that naive gulpfile is not good:
+          * No incremental rebuilds.
+          * Invalid source map.
+          * Need to restart gulp on error.
         * Concatenating source maps doesn't always work.
         * Streams transforms are built around transforming files 1:1
           * n:n/1:n/n:1 transforms more difficult.
