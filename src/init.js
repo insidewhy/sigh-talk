@@ -107,7 +107,7 @@ function init() {
     highlight(code) {
       // to avoid double escaping
       code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      return highlightjs.highlightAuto(code).value
+      return highlightjs.highlight('javascript', code).value
     }
   })
 

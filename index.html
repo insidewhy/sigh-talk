@@ -465,7 +465,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
         ```javascript
         // sigh.js
-        var glob, babel, concat
+        var glob, babel, concat // plugins injected into globals
 
         module.exports = function(pipelines) {
           pipeline.build = [
@@ -510,6 +510,67 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     </section>
 
     <section class="sigh-3">
+      <div data-markdown data-seq=-1>
+        # A more complicated example
+
+        ```javascript
+        // sigh.js
+        var glob, babel, sass, write, livereload, process
+
+        module.exports = function(pipelines) {
+          pipelines.client = [
+            merge(
+              [
+                glob({ basePath: 'src' }, '*.js', 'app.scss'),
+                sass(),
+                babel(),
+                write({ clobber: '!(jspm_packages)' }, 'build'),
+              ],
+              glob('index.html', 'config.js')
+            ),
+            livereload()
+          ]
+
+          pipelines.server = [
+            glob('server.js'),
+            process('node server.js')
+          ]
+        }
+        ```
+      </div>
+      <div data-markdown data-seq=1>
+        # With more parallelism
+
+        ```javascript
+        var glob, babel, sass, merge, write, livereload, process
+
+        module.exports = function(pipelines) {
+          var globOpts = { basePath: 'src' }
+
+          pipelines.client = [
+            merge(
+              [
+                merge(
+                  [ glob(globOpts, 'app.scss'), sass() ],
+                  [ glob(glopOpts, '*.js'), babel() ]
+                ),
+                write({ clobber: '!(jspm_packages)' }, 'build'),
+              ],
+              glob('index.html', 'config.js')
+            ),
+            livereload()
+          ]
+
+          pipelines.server = [
+            glob('server.js'),
+            process('node server.js')
+          ]
+        }
+        ```
+      </div>
+    </section>
+
+    <section class="sigh-4">
       <div data-markdown>
         # sigh uses processes for extra speed.
 
