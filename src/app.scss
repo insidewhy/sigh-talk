@@ -75,7 +75,7 @@ aside {
   border-radius: 15px;
   border: 5px solid black;
   padding: 10px;
-  font: fixed;
+  font-family: monospace;
   font-size: 25px;
   background-color: white;
 }
@@ -313,5 +313,12 @@ section {
     pre {
       height: 100%;
     }
+  }
+}
+
+.sigh-6 {
+  line-height: 1em;
+  .console {
+    font-size: 70%;
   }
 }
