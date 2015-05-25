@@ -22,39 +22,53 @@ export function activateSlide(name) {
   sequenceIdx = 0
   sequences = new ArrayOfArrays
   for (var seqNode of all(slide, '[data-seq]')) {
-    var { onIdx, offIdx } = parseSequence(seqNode)
+    var seqs = parseSequence(seqNode)
     seqNode.style.display = 'none'
 
-    if (onIdx !== undefined)
-      sequences.add(onIdx, { type: 'on', node: seqNode })
-    if (offIdx !== undefined)
-      sequences.add(offIdx, { type: 'off', node: seqNode })
+    seqs.forEach(seq => {
+      sequences.add(seq.idx, { type: seq.type, node: seqNode })
+    })
   }
 
   activateSequence(true)
 }
 
 function parseSequence(node) {
-  var seqs = node.dataset.seq.split('-')
-  var onIdx = seqs[0] || 0
+  var seqs = []
+  var seqDescs = node.dataset.seq.split('-')
 
-  // TODO:
-  // if (seqs.length === 1)
-  //   seqs[1] = parseInt(seqs[1]) + 1
+  // format: "number"
+  if (seqDescs.length === 1) {
+    seqs.push({ idx: seqDescs[0] || 0, type: 'once' })
+  }
+  else {
+    seqs.push({ idx: seqDescs[0] || 0, type: 'on' })
 
-  var offIdx
-  if (seqs[1] !== undefined)
-    offIdx = seqs[1]
+    // if not format "number-"
+    if (seqDescs[1] !== undefined)
+      seqs.push({ idx: seqDescs[1], type: 'off' })
+  }
 
-  return { onIdx, offIdx }
+  return seqs
 }
 
 // activates sequences at sequenceIdx
 function activateSequence(activate) {
-  var seq = sequences.get(sequenceIdx)
-  if (seq)
-    seq.forEach(({type, node}) => {
-      if (type === (activate ? 'on' : 'off'))
+  if (activate && sequenceIdx > 0) {
+    // deactivate 'once' items from previous index
+    var prevSeqs = sequences.get(sequenceIdx - 1)
+    if (prevSeqs) {
+      prevSeqs.forEach(({type, node}) => {
+        if (type === 'once')
+          node.style.display = 'none'
+      })
+    }
+  }
+
+  var seqs = sequences.get(sequenceIdx)
+  if (seqs)
+    seqs.forEach(({type, node}) => {
+      if ((! activate && type === 'off') || (activate && (type === 'on' || type === 'once')))
         node.style.display = ''
       else
         node.style.display = 'none'
@@ -64,8 +78,11 @@ function activateSequence(activate) {
 export function changeSlide(offset) {
   var nextSequence = sequenceIdx + offset
   if (offset > 0 && nextSequence < sequences.length) {
+    // activate skipped sequences
     for (++sequenceIdx; sequenceIdx < nextSequence; ++sequenceIdx)
       activateSequence(true)
+
+    // activate final sequence
     activateSequence(true)
   }
   else if (offset < 0 && nextSequence >= 0) {
