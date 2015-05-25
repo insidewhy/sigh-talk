@@ -152,7 +152,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     </section>
 
     <section class="oh-grunt-2">
-      <div data-markdown>
+      <div data-markdown data-seq=-1>
         ## Can schedule tasks to run after current task
         ```javascript
         // i cannot ride the catbus like this!!!
@@ -171,6 +171,21 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         ```
 
         Not before or during current task. ~~That would be wrong.~~
+      </div>
+      <div data-markdown data-seq=1>
+        ## A task can schedule other tasks in sequence
+        ```javascript
+        // i just need to write another task to ride the catbus
+        grunt.registerTask('get-on-catbus', function() {
+          // ...
+        })
+
+        grunt.registerTask('ride-catbus', [
+          'wait-at-bus-stop',
+          'give-totoro-umbrella',
+          'get-on-catbus'
+        ])
+        ```
       </div>
     </section>
 
