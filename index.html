@@ -518,6 +518,10 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         var glob, babel, sass, write, livereload, process
 
         module.exports = function(pipelines) {
+          // sigh runs all pipelines by default:
+          // ❯ sigh
+          // ❯ sigh client server
+          // these invocations are identical
           pipelines.client = [
             merge(
               [
@@ -572,11 +576,62 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="sigh-4">
       <div data-markdown>
+        # Connecting pipelines together
+
+        ```javascript
+        var glob, pipeline, babel, debounce, write, mocha
+
+        module.exports = function(pipelines) {
+          pipelines['build-sources'] = [
+            glob({ basePath: 'src' }, '*.js', 'plugin/*.js'),
+            babel({ modules: 'common' }),
+            write('lib')
+          ]
+
+          pipelines['build-tests'] = [
+            glob({ basePath: 'src/test' }, '*.js', 'plugin/*.js'),
+            babel({ modules: 'common' }),
+            write('lib/test')
+          ]
+
+          pipelines.alias.build = ['build-sources', 'build-tests']
+
+          pipelines['run-tests'] = [
+            // pipeline does not force pipelines to run, if user
+            // runs 'sigh build-tests run-tests' then
+            // 'build-source' will not be run
+            pipeline('build-sources', 'build-tests'),
+            debounce(700),
+            // { activate: true } forces mocha pipeline to
+            // run even if it was not selected
+            pipeline({ activate: true }, 'mocha')
+          ]
+
+          // explicit pipelines only run if selected or activated.
+          pipelines.explicit.mocha = [
+            mocha({ files: 'lib/test/**/*.spec.js' })
+          ]
+
+          // now the user can run
+          // ❯ sigh build            # only build
+          // ❯ sigh build run-tests  # build and run tests
+          // ❯ sigh mocha            # only run tests
+        }
+        ```
+      </div>
+    </section>
+
+    <section class="sigh-5">
+      <div data-markdown>
         # sigh uses processes for extra speed.
 
         * Tests: keeps two processes cached and waiting.
           * Tests killed when new value received while running.
           * Second process already waiting to avoid startup delay.
+        * Safe-parallelism:
+          * Array of events split up and distributed to processes.
+          * Collects results from all processes.
+          * Forwards all events in one payload, just as if one process did it.
         * Compiles ES6 files faster than the native transpiler.
 
         # Structure
