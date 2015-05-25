@@ -266,8 +266,12 @@ section {
 }
 
 .broccoli-2, .sigh-3, .sigh-4 {
+  height: 100%;
+  >div {
+    height: 100%;
+  }
   pre {
-    height: 19em;
+    height: 80%;
     overflow: scroll;
   }
 }
@@ -298,4 +302,16 @@ section {
     min-width: 85%;
   }
   padding: 10px;
+}
+
+.sigh-3, .sigh-4 {
+  .console {
+    padding: 10px 20px;
+  }
+  header {
+    height: 60%;
+    pre {
+      height: 100%;
+    }
+  }
 }

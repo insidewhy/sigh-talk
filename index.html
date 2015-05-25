@@ -514,7 +514,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
     </section>
 
     <section class="sigh-3">
-      <div data-markdown data-seq=-1>
+      <header data-markdown data-seq=-3>
         # A more complicated example
 
         ```javascript
@@ -522,10 +522,6 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         var glob, babel, sass, write, livereload, process
 
         module.exports = function(pipelines) {
-          // sigh runs all pipelines by default:
-          // ❯ sigh
-          // ❯ sigh client server
-          // these invocations are identical
           pipelines.client = [
             merge(
               [
@@ -545,8 +541,8 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
           ]
         }
         ```
-      </div>
-      <div data-markdown data-seq=1>
+      </header>
+      <header data-markdown data-seq=3>
         # With more parallelism
 
         ```javascript
@@ -575,11 +571,26 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
           ]
         }
         ```
-      </div>
+      </header>
+      <footer data-seq=-1>
+        Only run tests: <span class=console>
+          <span data-blink=500>❯</span> sigh mocha
+        </span>
+      </footer>
+      <footer data-seq=1-2>
+        Run all pipelines: <span class=console>
+          <span data-blink=500>❯</span> sigh
+        </span>
+      </footer>
+      <footer data-seq=2>
+        Same as: <span class=console>
+          <span data-blink=500>❯</span> sigh build client
+        </span>
+      </footer>
     </section>
 
     <section class="sigh-4">
-      <div data-markdown>
+      <header data-markdown>
         # Connecting pipelines together
 
         ```javascript
@@ -615,19 +626,29 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
           pipelines.explicit.mocha = [
             mocha({ files: 'lib/test/**/*.spec.js' })
           ]
-
-          // now the user can run
-          // ❯ sigh build            # only build
-          // ❯ sigh build run-tests  # build and run tests
-          // ❯ sigh mocha            # only run tests
         }
         ```
-      </div>
+      </header>
+      <footer data-seq=-1>
+        Incremental rebuilds without tests: <span class=console>
+          <span data-blink=500>❯</span> sigh -w build
+        </span>
+      </footer>
+      <footer data-seq=1-2>
+        Incremental rebuilds with tests: <span class=console>
+          <span data-blink=500>❯</span> sigh -w
+        </span>
+      </footer>
+      <footer data-seq=2>
+        Only run tests: <span class=console>
+          <span data-blink=500>❯</span> sigh mocha
+        </span>
+      </footer>
     </section>
 
     <section class="sigh-5">
       <div data-markdown>
-        # sigh uses processes for extra speed.
+        # sigh uses multiple processes for extra speed.
 
         * Tests: keeps two processes cached and waiting.
           * Tests killed when new value received while running.
