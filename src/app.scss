@@ -43,7 +43,7 @@ pre {
 }
 
 aside {
-  font-size: 80%;
+  font-size: 20px;
   float: left;
   padding: 30px 5px;
   height: 100%;
@@ -138,7 +138,7 @@ section {
 
 .intro header {
   font-family: Times;
-  font-size: 120%;
+  font-size: 30px;
 }
 
 .what-is {
@@ -171,9 +171,9 @@ section {
 
   pre {
     margin-top: 0;
-    font-size: 120%;
+    font-size: 30px;
     .colon {
-      font-size: 360%;
+      font-size: 120px;
     }
   }
 
@@ -213,10 +213,10 @@ section {
 .oh-grunt-3 pre {
   background-color: white;
   margin-top: 20px;
-  width: 800px;
-  height: 250px;
+  width: 50em;
+  height: 20em;
   overflow: scroll;
-  font-size: 50%;
+  font-size: 17px;
 }
 
 .oh-gulp, .oh-gulp-4 {
