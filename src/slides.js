@@ -75,20 +75,19 @@ function activateSequence(activate) {
     })
 }
 
+/**
+ * Go forwards or backwards a slide.
+ * @param {Number} offset Must be -1 or 1
+ */
 export function changeSlide(offset) {
   var nextSequence = sequenceIdx + offset
   if (offset > 0 && nextSequence < sequences.length) {
-    // activate skipped sequences
-    for (++sequenceIdx; sequenceIdx < nextSequence; ++sequenceIdx)
-      activateSequence(true)
-
-    // activate final sequence
+    ++sequenceIdx
     activateSequence(true)
   }
   else if (offset < 0 && nextSequence >= 0) {
-    for (; sequenceIdx > nextSequence; --sequenceIdx) {
-      activateSequence(false)
-    }
+    activateSequence(false)
+    --sequenceIdx
   }
   else {
     var activeIdx = allSlides.indexOf(activeSlide)
