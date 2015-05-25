@@ -14,6 +14,14 @@
     </aside>
 
     <section class="intro">
+      <div class="warning">
+        <img alt="Mr. T" src=img/mr-t.png>
+        <div class=hey-suckah>
+          Sorry SUCKAH, this website works way best in Chrome.<br>
+          It uses web ANIMATIONS you damn fool.<br>
+          Those ain't supported in your FOOL browser.
+        </div>
+      </div>
       <header data-markdown>
         ![vb](img/vb.gif)
 
@@ -325,16 +333,51 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
       </div>
     </section>
 
+    <section class="broccoli-2">
+      <div data-markdown>
+        # That example from earlier in broccoli
+
+        ```javascript
+        var funnel        = require('broccoli-funnel')
+        var mergeTrees    = require('broccoli-merge-trees')
+        var es6Transpiler = require('broccoli-babel-transpiler')
+        var concat        = require('broccoli-concat')
+
+        var es6Tree = funnel('app', {
+          destDir: 'es6',
+          include: [ /\.js$/ ]
+        })
+        var es6TranspiledTree = esTranspiler(es6Tree)
+
+        var rawJsTree = funnel('raw', {
+          destDir: 'raw',
+          include: [ /\.js$/ ]
+        })
+
+        var allJsTree = mergeTrees([ es6TranspiledTree, rawJsTree ])
+
+        var concatTree = concat(allJsTree, {
+          // ensure raw files concatted after es6 files
+          inputFiles: [ 'es6/*', 'raw/*' ],
+          outputFile: 'dist/assets/output.js'
+        })
+
+        module.exports = concatTree
+        ```
+      </div>
+    </section>
+
     <section class="oh-broccoli">
       <div data-markdown>
         # But...
 
-        * Source maps only sometimes working.
-          * Most plugins lack transitive application.
+        * Source maps rarely working.
+          * Not working in previous example.
+          * Many plugins lack transitive application.
         * Use of filesystem means plugins must clean-up.
         * "No parallelism"
           * "Only a 40% speed gain."
-          * Possible but broccoli's primitives + helper code encourage deterministic sequential code patterns.
+          * Possible but "broccoli's primitives + helper code encourage deterministic sequential code patterns."
         * Brocfile.js files can get verbose.
       </div>
     </section>
@@ -418,7 +461,7 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
 
     <section class="sigh-2">
       <div data-markdown data-seq=-3>
-        # That gulp example from earlier
+        # That example from earlier in sigh
 
         ```javascript
         // sigh.js

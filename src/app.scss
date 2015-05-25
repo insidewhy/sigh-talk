@@ -142,6 +142,13 @@ section {
 
 .intro {
   font-size: 28px;
+  .warning {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 60px;
+    z-index: 2;
+  }
   header {
     font-family: Times;
     font-size: 30px;
@@ -250,11 +257,18 @@ section {
   }
 }
 
-.broccoli {
+.broccoli, .intro {
   .hey-suckah {
     position: relative;
     top: -13px;
     z-index: 2;
+  }
+}
+
+.broccoli-2 {
+  pre {
+    height: 18em;
+    overflow: scroll;
   }
 }
 

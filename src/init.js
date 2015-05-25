@@ -54,6 +54,12 @@ function initEffects() {
   }
 }
 
+function showWarningToUnsupportedBrowser() {
+  var div = document.createElement('div')
+  if (! div.animate)
+    one('.intro .warning').style.display = 'block'
+}
+
 function runImports() {
   var links = all('link[rel="import"]')
   links.forEach(link => {
@@ -105,6 +111,7 @@ function init() {
     }
   })
 
+  showWarningToUnsupportedBrowser()
   runImports()
   translateMarkdown()
   initEffects()
