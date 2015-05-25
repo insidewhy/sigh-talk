@@ -292,3 +292,10 @@ section {
     top: -2em;
   }
 }
+
+.sigh-3 {
+  >* {
+    min-width: 85%;
+  }
+  padding: 10px;
+}
