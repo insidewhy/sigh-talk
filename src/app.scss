@@ -207,6 +207,27 @@ section {
   }
 }
 
+section.jake {
+  .jake {
+    height: 100px;
+    position: absolute;
+    left: 400px;
+    top: 10px;
+    z-index: 3;
+  }
+  .mr-t {
+    height: 200px;
+    position: absolute;
+    left: 374px;
+    top: 17px;
+    z-index: 2;
+  }
+  .hey-suckah {
+    position: relative;
+    text-decoration: line-through;
+  }
+}
+
 .oh-grunt {
   padding-top: 10px;
 
@@ -261,7 +282,7 @@ section {
   .hey-suckah {
     position: relative;
     top: -13px;
-    z-index: 2;
+    z-index: 4;
   }
 }
 
