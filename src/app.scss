@@ -298,10 +298,13 @@ section {
 }
 
 .sigh-3 {
+  padding: 10px;
+}
+
+.sigh-3, .sigh-4 {
   >* {
     min-width: 85%;
   }
-  padding: 10px;
 }
 
 .sigh-3, .sigh-4 {
