@@ -545,10 +545,11 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         ```
       </header>
       <header data-markdown data-seq=2>
-        # With more parallelism
+        # With more parallelism and environments
 
         ```javascript
         var glob, babel, sass, merge, write, livereload, process
+        var env, concat, uglify
 
         module.exports = function(pipelines) {
           var globOpts = { basePath: 'src' }
@@ -558,7 +559,14 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
               [
                 merge(
                   [ glob(globOpts, 'app.scss'), sass() ],
-                  [ glob(glopOpts, '*.js'), babel() ]
+                  [
+                    glob(glopOpts, '*.js'),
+                    babel(),
+                    env(
+                      [ concat('combined.js'), uglify() ],
+                      [ 'production', 'staging' ]
+                    )
+                  ]
                 ),
                 write({ clobber: '!(jspm_packages)' }, 'build'),
               ],
@@ -579,9 +587,14 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
           <span data-blink=500>❯</span> sigh
         </span>
       </footer>
-      <footer data-seq=1>
+      <footer data-seq=1-3>
         Same as: <span class=console>
           <span data-blink=500>❯</span> sigh client server
+        </span>
+      </footer>
+      <footer data-seq=3>
+        Production build: <span class=console>
+          <span data-blink=500>❯</span> sigh -e production
         </span>
       </footer>
     </section>
