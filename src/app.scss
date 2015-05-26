@@ -249,7 +249,7 @@ section.jake {
 
 .oh-grunt {
   padding-top: 10px;
-  background-color: blue;
+  background-color: turquoise;
 
   pre {
     margin: 10px 0 0;
@@ -257,7 +257,7 @@ section.jake {
   h2 {
     margin-top: 30px;
   }
-  >div {
+  >div, h2 {
     background-color: white;
   }
   .console {
@@ -346,6 +346,33 @@ section.jake {
     line-height: 70px;
     list-style: none;
     background: url('../img/wtf.png') no-repeat 0 0;
+  }
+}
+
+.FRP {
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+  }
+
+  [data-seq="1"] {
+    top: 10px;
+    left: 10px;
+  }
+  [data-seq="2"] {
+    top: -20px;
+    left: -10px;
+  }
+  [data-seq="3"] {
+    top: 240px;
+    left: -40px;
+    width: 100%;
+    height: 200px;
+  }
+  [data-seq="4"].other {
+    top: 240px;
   }
 }
 
