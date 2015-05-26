@@ -51,13 +51,13 @@
         * How to build code:
           * Task runner
           * Asset pipeline
-          * Build automation system
         * Good for anything that reacts to code changes
           * Transpile es6/coffee/typescript/scss.
           * Run tests after everything is built.
           * Create production version of code (minified etc.)
           * Talks to your browser via livereload.
           * Incrementally rebuild.
+        * Reactive development automation system
       </div>
     </section>
 
@@ -405,7 +405,10 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         * Source maps rarely working.
           * Not working in previous example.
           * Many plugins lack transitive application.
-        * Use of filesystem means plugins must clean-up.
+        * Use of filesystem questionable:
+          * Plugins must clean-up.
+          * Infrastructure code more complicated, temp files etc.
+          * Filesystem is slow.
         * "No parallelism"
           * "Only a 40% speed gain."
           * Possible but "broccoli's primitives + helper code encourage deterministic sequential code patterns."
