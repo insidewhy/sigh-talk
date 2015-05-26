@@ -106,7 +106,7 @@ function init() {
   marked.setOptions({
     highlight(code) {
       // to avoid double escaping
-      code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      code = code.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
       return highlightjs.highlight('javascript', code).value
     }
   })
