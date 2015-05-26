@@ -140,11 +140,15 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         module.exports = function(grunt) {
           grunt.initConfig({
             jshint: {
-              files: ['**/*.js'],
+              files: ['src/*.js'],
               options: JSON.parse(require('fs').readFileSync('./.jshintrc'))
-            }
+            },
+            mochaTest: {
+              files: ['test/*.spec.js']
+            },
           })
           grunt.loadNpmTasks('grunt-contrib-jshint')
+          grunt.loadNpmTasks('grunt-mocha-test')
         }
         ```
         <div class=console>
@@ -154,11 +158,12 @@ BINS SUCKAH</span> <img alt="Mr T's van" src=img/mr-ts-van.jpg> <img alt="Optimu
         ## npm
         ```javascript
         "scripts": {
-          "lint": "jshint **/*.js"
+          "lint": "jshint src/*.js",
+          "mocha": "mocha test/*.spec.js",
         }
         ```
         <div class=console>
-          <span data-blink=500>❯</span> npm lint
+          <span data-blink=500>❯</span> npm lint mocha
         </div>
       </div>
     </section>
