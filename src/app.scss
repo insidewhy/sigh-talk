@@ -161,7 +161,7 @@ section {
   }
 }
 
-@-webkit-keyframes fading {
+@-webkit-keyframes sliding-fading {
   0% { left: 0px; }
   100% { left: 200px; }
 
@@ -176,7 +176,7 @@ section {
 .history {
   img {
     position: absolute;
-    -webkit-animation: fading 4s infinite alternate;
+    -webkit-animation: sliding-fading 4s infinite alternate;
   }
 }
 
@@ -249,6 +249,7 @@ section.jake {
 
 .oh-grunt {
   padding-top: 10px;
+  background-color: blue;
 
   pre {
     margin: 10px 0 0;
@@ -261,6 +262,12 @@ section.jake {
   }
   .console {
     width: 30%;
+  }
+
+  footer {
+    position: absolute;
+    text-align: right;
+    bottom: 0;
   }
 }
 
