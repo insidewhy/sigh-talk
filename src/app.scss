@@ -165,6 +165,12 @@ section {
   0% { left: 0px; }
   100% { left: 200px; }
 
+  0% { -webkit-transform: rotate(0deg) }
+  5% { -webkit-transform: rotate(5deg) }
+  10% { -webkit-transform: rotate(-5deg) }
+  15% { -webkit-transform: rotate(7deg) }
+  20% { -webkit-transform: rotate(-7deg) }
+
   0% { opacity: 0.9; }
   35% { opacity: 0.5; }
   40% { opacity: 0.1; }
