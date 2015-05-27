@@ -160,8 +160,18 @@ section {
     font-size: 30px;
   }
   img[alt="evil-cameron"] {
+    position: relative;
+    z-index: 3;
     height: 100px;
     -webkit-animation: messed-up-rotate 1.0s infinite;
+  }
+  img[alt="suit"] {
+    position: relative;
+    left: -100px;
+    top: 60px;
+    height: 100px;
+    z-index: -1;
+    opacity: 0.5;
   }
 }
 
